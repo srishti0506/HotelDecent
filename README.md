@@ -19,5 +19,5 @@ We create an Admin dashboard where admin can view all the bookings both upcoming
 ## Cancellation
 ![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/cancel%20disable.png)
 ![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/refund%20100.png)
-### Admin can cancel any future booking.
+### Admin can cancel any future booking and get refund of 100% if the booking time is more than 48hrs and if the start time is within 24 hrs to 48 hrs then if she can get refund of 50% else no refund.
 
