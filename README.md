@@ -43,6 +43,6 @@ It is a Hotel Room Management Admin App where we have multiple rooms of multiple
 
 ![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/bookings.png)
 
-### This a "bookings" table where we have all the booking details.
+### This is a "bookings" table where we have all the booking details.
 
 
