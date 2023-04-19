@@ -101,7 +101,7 @@ const Logs = () => {
     };
     
   return (
-    <div>
+    <div id='vb'>
         <form className="headingX" onSubmit={(e)=>submit(e)}>
         <hr></hr>
         <div className="form-row log-class">
@@ -184,8 +184,8 @@ const Logs = () => {
         </div>
     </form>
     <br></br><hr></hr>
-    <form action="/" method="">
-        <table className="table table-hover px-7">
+    <form id='vbform' action="/" method="">
+        <table id='vbtable' className="table table-hover px-7">
             <thead className="thead-dark">
                 <tr>
                     <th>Sr No.</th>

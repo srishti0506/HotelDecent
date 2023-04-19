@@ -5,7 +5,7 @@ import './css/Navbar.css';
 
 const Navbar = ()=>{
   return(
-    <>
+    // <>
    
     <div className='headingX'>
     <div>
@@ -31,7 +31,7 @@ const Navbar = ()=>{
       </nav>
       </div>
     </div>
-    </>
+    // {/* </> */}
   )
 }
 

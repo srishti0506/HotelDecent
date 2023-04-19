@@ -99,7 +99,7 @@ function BookingForm() {
   }
 
   return (
-    <div >
+    <div id='bookingmain'>
       <center>
        
       </center>

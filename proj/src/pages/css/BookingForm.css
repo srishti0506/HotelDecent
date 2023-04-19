@@ -148,6 +148,26 @@
     align-items: center;
     flex-direction: column;
   }
+
+  #vb{
+    width:99vw;
+   
+    overflow:wrap;
+  }
+
+  #vbtable{
+
+  
+    width:100%;
+    /* overflow: hidden; */
+
+  }
+
+  #vbform{
+    /* border:1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+  }
   
   /* Media Queries for responsiveness */
   
@@ -166,6 +186,14 @@
     .form-group1 h1 {
       margin-left: -140px;
     }
+
+    #vbtable{
+
+      /* border:1px solid red; */
+      width:99.6vw;
+      overflow: hidden;
+  
+    }
   }
   
   /* For screens larger than 768px */
@@ -182,6 +210,14 @@
     
     .form-group1 h1 {
       margin-left: -250px;
+    }
+
+    #vbtable{
+
+      
+      width:99.6vw;
+      overflow: hidden;
+  
     }
   }
   
