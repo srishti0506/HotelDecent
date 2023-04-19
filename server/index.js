@@ -18,21 +18,21 @@ const PORT = 6969;
 let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     auth: {
-        user: 'hoteldecent87@gmail.com', // email account from which you want to send the email
-        pass: 'doyphmarafhzblda' // password for the email account
+        user: 'srishti1735.be20@chitkara.edu.in', // email account from which you want to send the email
+        pass: 'cdludgxdcbnwreyb' // password for the email account
     }
 });
 
 // setup email data with unicode symbols
 //for room booking 
 var bookingRoom = {
-    from: 'hoteldecent87@gmail.com',
+    from: 'srishti1735.be20@chitkara.edu.in',
     subject: 'Room Booking Confirmation',
 };
 
 //for cancel booking
 var cancelRoom = {
-    from: 'hoteldecent87@gmail.com',
+    from: 'srishti1735.be20@chitkara.edu.in',
     subject: 'Room Cancellation',
 };
 
