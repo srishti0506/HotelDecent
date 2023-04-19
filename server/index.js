@@ -8,12 +8,10 @@ const PORT = 6969;
 
 
 
-// create reusable transporter object using the default SMTP transport
-
-
-
 //firing the email to users who have booked correct email, room number, start time, end time
 
+
+// create reusable transporter object using the default SMTP transport
 
 let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -50,7 +48,7 @@ const conn = mysql.createConnection({
     database: "hotel_management",
 });
 
-//getting the details from database
+
 app.get("/init",(req,res)=>{
     console.log("hello");
 
@@ -63,11 +61,13 @@ app.get("/init",(req,res)=>{
         else nowDT += c;
     }
     console.log(nowDT);
-
+    //set the status to past for all the booking where the starttime is greater than the endtime
     let updateQuery = `update bookings set status='past' where end_time < "${nowDT}" and status not like 'cancelled'`;
 
     let query = conn.query(updateQuery, (err,resl)=>{
         if(err) throw err;
+
+        //getting room_info  from the database
         let sqlQuery = "SELECT * FROM room_info";
             query = conn.query(sqlQuery, (err, results) => {
             if(err) throw err;
@@ -78,6 +78,7 @@ app.get("/init",(req,res)=>{
     
 })
 
+//Deleting the bookings
 app.delete("/deletebooking/:id",(req,res)=>{
     let sqlQuery = "DELETE FROM bookings WHERE id='"+req.params.id+"'";
     
@@ -105,7 +106,7 @@ app.put("/cancelbooking/:id/:ret/:em/:rn/:rt/:st/:et",(req,res)=>{
     });
 })
 
-//
+//updating the booking details of the user in the database
 app.put("/editBooking/:id",(req,res)=>{
     let sqlQuery = "UPDATE bookings SET ? WHERE id= '"+req.params.id+"'";
   
@@ -114,6 +115,7 @@ app.put("/editBooking/:id",(req,res)=>{
       res.send(apiResponse(results));
     });})
 
+//getting all the data from the booking table for given booking id
 app.get("/booking/:id",(req,res)=>{
     let q = conn.query(`SELECT * FROM bookings where id=${req.params.id}`, (err, results) => {
         if(err) throw err;
@@ -121,6 +123,7 @@ app.get("/booking/:id",(req,res)=>{
     });
 })
 
+//geeting all the booking details
 app.get("/bookings/*",(req,res)=>{
 
     const params = req.params[0].split('/');
@@ -131,6 +134,7 @@ app.get("/bookings/*",(req,res)=>{
 
     const [room_type, room_number, start_time, end_time,status] = params;
 
+    //filtering the booking details
     if (room_type) conditions.push(`room_type = '${room_type}'`);
     if (room_number) conditions.push(`room_number = ${parseInt(room_number)}`);
     if (start_time) conditions.push(`start_time >= '${start_time}'`);
@@ -147,7 +151,7 @@ app.get("/bookings/*",(req,res)=>{
     });
   
 });
-
+//Booking the room and inserting the info in the booking tables 
 app.post("/bookroom",(req,res)=>{
     console.log("Book room");
    
@@ -177,7 +181,9 @@ app.post("/bookroom",(req,res)=>{
 
     }
     console.log(obj);
-    
+
+    //checking if teh new bookimg overlaps or collides with an existing booking
+
     let sqlQuery =`select count(*) as cnt from bookings where room_type="${roomType}" and room_number=${roomNumber} and (("${startTime}" between start_time and end_time) or ("${endTime}" between start_time and end_time) or (start_time between "${startTime}" and "${endTime}") or (end_time between "${startTime}" and "${endTime}")); `;
   
     let query = conn.query(sqlQuery, (err, results) => {

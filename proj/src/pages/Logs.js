@@ -19,6 +19,7 @@ const Logs = () => {
     const [totalPrice,settotalPrice]=useState(0);
     const navigate = useNavigate();
 
+    //Checking the refund percentage on cancellation
     const RefundPolicy = (obj) => {
         console.log(obj);
         const now = new Date();
@@ -62,7 +63,7 @@ const Logs = () => {
                 console.log("qertyu");
             });
     },[]);
-
+        //fetching all the booking details
     const getAllBookings = ()=>{
         api.get("/bookings//").then((response)=>{
                 setData(response.data);
@@ -89,6 +90,7 @@ const Logs = () => {
         }
     };
 
+    //Filtering the details using roomtype roomnumber startime endtime and status
     const submit = (e)=>{
         console.log("trying to submit")
         e.preventDefault();

@@ -22,7 +22,8 @@ function BookingForm() {
   useEffect(() => {
     console.log("heil1");
     let obj = {};
-    api.get("/init").then((response)=>{
+
+    api.get("/init").then((response)=>{ //fetching available room configuration.
            console.log("hello") 
            console.log(response.data);
            let data=response.data.response;
@@ -39,7 +40,7 @@ function BookingForm() {
     
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => { //processing the user input before submission
     event.preventDefault();
     console.log(`Email: ${email}`);
     console.log(`Start Time: ${startTime}`);
@@ -47,7 +48,7 @@ function BookingForm() {
     console.log(`Room Number: ${roomNumber}`);
     console.log(`Room Type: ${roomType}`);
 
-    const room_info={
+    const room_info={ //assigning the variables
       email:email,
       roomNumber:roomNumber,
       roomType:roomType,
@@ -55,15 +56,16 @@ function BookingForm() {
       endTime:endTime,
       price:totalPrice
     }
-    api.post(`/bookroom`,room_info).then((response)=>{
+    api.post(`/bookroom`,room_info).then((response)=>{ //hiiting the api to book the room
       console.log("hello");
       console.log(response);
       if(response.data.msg !== undefined){
-        alert(response.data.msg);
+        alert(response.data.msg); //alert of invalid room
         return;
       }else{
         alert("Booked");
       }
+      //Clearing all the input fields after submitting the form
       setEmail("");
       setEndTime("");
       setStartTime("");
@@ -77,6 +79,7 @@ function BookingForm() {
     })
     
   };
+  
 
   const changePrice=(newConfig)=>{
     console.log(newConfig);
@@ -86,6 +89,7 @@ function BookingForm() {
       const diffInMs = enDate - stDate;
       const diffInHours = diffInMs / (1000 * 60 * 60);
       
+      //Invalid date time: when the starttime is after endtime
       if(diffInHours <= 0){
         alert("Invalid Start or End Time");
         setStartTime("");
@@ -179,10 +183,6 @@ function BookingForm() {
           <center> <button className=" btn btn-outline-secondary" type="submit">Submit</button></center> 
           </div>
         </div>
-
-
-
-        
       </form>
     </div>
   );

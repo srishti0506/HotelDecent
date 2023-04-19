@@ -26,7 +26,7 @@ const Edit = () => {
                 obj[`${data[i].room_type}`]={rooms:data[i].total_rooms,pph:data[i].price};//price per hour:pph
             }
             setRoomConfig(obj);
-
+            //fetching data for the booking to be edited
             api.get(`/booking/${id}`).then((res)=>{
                 setData(res.data[0]);
                 setEmail(res.data[0].email);
@@ -80,7 +80,7 @@ const Edit = () => {
           price:totalPrice
 
         }
-
+      //hitting the api to update the booking
       api.put(`/editBooking/${id}`,data).then((r)=>{
           console.log(r)
       }).catch((err)=>console.log(err));
