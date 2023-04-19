@@ -1,0 +1,187 @@
+/* .container{
+    margin-left:20% ;
+    margin-right: 20%;
+}
+.mainBooking {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40rem;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 10px 10px 5px 0px rgba(148, 147, 147, 0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(148, 147, 147, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(148, 147, 147, 0.75);
+    background-color: rgb(241, 242, 243);
+  }
+  .bk{
+    width: 25rem;
+    
+  }
+  .btn1{
+    border:1px solid rgb(78, 76, 76);
+    border-radius: 3px;
+   
+  }
+  
+  .form-group1{
+    margin-bottom:10px ;
+  }
+  .form-group1 h1{
+    margin-bottom:10px ;
+    max-width: max-content;
+    padding: 7px 14px;
+
+    margin-left: -250px;
+    background-color: rgb(255, 199, 130);
+    font-weight: bold ;
+    border-bottom-left-radius:12px;
+    border-top-right-radius:12px;
+    
+
+    
+  }
+
+ 
+  
+ .form-group1 label{
+  margin-bottom:6px ;
+ }
+
+  .inpt{
+    padding: 10px;
+
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .slect{
+    
+        padding: 10px;
+        font-size: 1.2rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+  
+  
+  center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  } */
+
+  .container{
+    margin-left:20%;
+    margin-right: 20%;
+  }
+  
+  .mainBooking {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40rem;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 10px 10px 5px 0px rgba(148, 147, 147, 0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(148, 147, 147, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(148, 147, 147, 0.75);
+    background-color: rgb(241, 242, 243);
+  }
+  
+  .bk{
+    width: 25rem;
+  }
+  
+  .btn1{
+    border:1px solid rgb(78, 76, 76);
+    border-radius: 3px;
+  }
+  
+  .form-group1{
+    margin-bottom:10px;
+  }
+  
+  .form-group1 h1{
+    margin-bottom:10px;
+    max-width: max-content;
+    padding: 7px 14px;
+    margin-left: -250px;
+    background-color: rgb(255, 199, 130);
+    font-weight: bold;
+    border-bottom-left-radius:12px;
+    border-top-right-radius:12px;
+  }
+  
+  .form-group1 label{
+    margin-bottom:6px;
+  }
+  
+  .inpt{
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .slect{
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Media Queries for responsiveness */
+  
+  /* For screens smaller than 768px */
+  @media (max-width: 767px) {
+    .container {
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    
+    .mainBooking {
+      width: 90%;
+      height: auto;
+    }
+    
+    .form-group1 h1 {
+      margin-left: -140px;
+    }
+  }
+  
+  /* For screens larger than 768px */
+  @media (min-width: 768px) {
+    .container {
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+    
+    .mainBooking {
+      width: 50%;
+      height: 40rem;
+    }
+    
+    .form-group1 h1 {
+      margin-left: -250px;
+    }
+  }
+  
