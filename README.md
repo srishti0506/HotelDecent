@@ -37,7 +37,7 @@ It is a Hotel Room Management Admin App where we have multiple rooms of multiple
 
 ## 6. Database
 
-![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/send%20email.png)
+![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/room_info.png)
 
 ### This is a "room_info" table where we have the information of rooms.
 
