@@ -106,7 +106,7 @@ const Logs = () => {
         <hr></hr>
         <div className="form-row log-class">
             <div className="form-group col-md-1.5">
-                <label for="room_type">Room Type:</label>
+                <label htmlFor="room_type">Room Type:</label>
                 <select className="form-control" id="room_type" name="room_type" type="select" value={roomType}   onChange={(e) => {
                     setRoomType(e.target.value);
 
@@ -128,7 +128,7 @@ const Logs = () => {
             </div>
 
             <div className="form-group col-md-1.5">
-                <label for="room_no">Room Number</label>
+                <label htmlFor="room_no">Room Number</label>
                 <input className="form-control" type="number" value={roomNumber}  min={1} max={maximumRoom} onChange={(e) => setRoomNumber(e.target.value)} />
             </div>
             <div className="form-group col-md-1.5">
@@ -161,7 +161,7 @@ const Logs = () => {
                 </label>
             </div>
             <div className="form-group col-md-1.5">
-                <label for="status">Status</label>
+                <label htmlFor="status">Status</label>
                 <select className="form-control" id="status" name="status" onChange={(e)=>setStatus(e.target.value)}>
                     <option value="">-- Select Status --</option>
                     <option value="confirmed">Confirmed</option>
@@ -203,7 +203,7 @@ const Logs = () => {
             <tbody>
             {
                 data && data.map((e,idx)=>(
-                    <tr>
+                    <tr key={idx}>
                         <td>{idx+1}</td>
                         <td>{e.email}</td>
                         <td>{e.room_type}</td>
