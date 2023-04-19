@@ -1,6 +1,8 @@
 # Hotel Decent
 It is a Hotel Room Management Admin App where we have multiple rooms of multiple types. Each room type has a different type of pricing per hour. 
 
+### Deployment Link http://ec2-54-244-0-53.us-west-2.compute.amazonaws.com:3000/home
+
 ## 1. Admin Dashboard
 
 
