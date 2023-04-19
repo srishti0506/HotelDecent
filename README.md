@@ -25,7 +25,7 @@ It is a Hotel Room Management Admin App where we have multiple rooms of multiple
 
 ![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/refund%20100.png)
 
-### Admin can cancel any future booking and get refund of 100% if the booking time is more than 48hrs and if the start time is within 24 hrs to 48 hrs then he she can get refund of 50% else no refund.
+### Admin can cancel any future booking and get refund of 100% if the booking time is more than 48hrs and if the start time is within 24 hrs to 48 hrs then he/she can get refund of 50% else no refund.
 
 ## 5. Sending Email
 
