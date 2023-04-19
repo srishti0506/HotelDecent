@@ -18,5 +18,6 @@ We create an Admin dashboard where admin can view all the bookings both upcoming
 
 ## Cancellation
 ![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/cancel%20disable.png)
+![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/refund%20100.png)
 ### Admin can cancel any future booking.
 
