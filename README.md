@@ -33,9 +33,10 @@ It is a Hotel Room Management Admin App where we have multiple rooms of multiple
 
 ### Admin can send mail to the user who have booked the room and cancelled the room.
 
-## 6. Database
+
 
 ![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/send%20email.png)
+## 6. Database
 
 ### This is a "room_info" table where we have the information of rooms.
 
