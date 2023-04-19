@@ -4,4 +4,19 @@ We create an Admin dashboard where admin can view all the bookings both upcoming
 ## Admin Dashboard
 
 
-![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/Admin.png)
+![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/dashboard.png)
+
+### Admin can delete, edit, cancel the booking and list all bookings.
+
+## Booking
+![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/book%20a%20room.png)
+### Admin can create a new room booking
+
+## Edit
+![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/edit%20details.png)
+### Admin can edit the details like user email, room number, start time, end time and can update the confirmation on updated price.
+
+## Cancellation
+![nbase5](https://github.com/srishti0506/HotelDecent/blob/main/img/cancel%20disable.png)
+### Admin can cancel any future booking.
+
