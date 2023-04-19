@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import api from '../api/data'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import './css/BookingForm.css';
 
@@ -18,7 +18,7 @@ const Edit = () => {
 
     useEffect(()=>{
         let obj = {};
-        axios.get("http://localhost:6969/init").then((response)=>{
+        api.get("/init").then((response)=>{
             console.log("hello") 
             console.log(response.data);
             let data=response.data.response;
@@ -27,7 +27,7 @@ const Edit = () => {
             }
             setRoomConfig(obj);
 
-            axios.get(`http://localhost:6969/booking/${id}`).then((res)=>{
+            api.get(`/booking/${id}`).then((res)=>{
                 setData(res.data[0]);
                 setEmail(res.data[0].email);
                 setRoomNumber(res.data[0].room_number);
@@ -81,7 +81,7 @@ const Edit = () => {
 
         }
 
-      axios.put(`http://localhost:6969/editBooking/${id}`,data).then((r)=>{
+      api.put(`/editBooking/${id}`,data).then((r)=>{
           console.log(r)
       }).catch((err)=>console.log(err));
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../api/data'
 import { useNavigate } from 'react-router-dom';
 import {AiFillCloseCircle} from 'react-icons/ai';
 import Navbar from './Navbar';
@@ -37,7 +37,7 @@ const Logs = () => {
         let rAmt = parseInt(refundAmount);
 
         if(window.confirm("Are you Sure you want to cancel ? Refund of "+refundAmount+" will be given")){
-            axios.put(`http://localhost:6969/cancelbooking/${obj.id}/${rAmt}/${obj.email}/${obj.room_number}/${obj.room_type}/${obj.start_time}/${obj.end_time}`).then((r)=>{
+            api.put(`/cancelbooking/${obj.id}/${rAmt}/${obj.email}/${obj.room_number}/${obj.room_type}/${obj.start_time}/${obj.end_time}`).then((r)=>{
                                 getAllBookings();
                             }).catch((e)=>console.log(e))
             
@@ -49,7 +49,7 @@ const Logs = () => {
     useEffect(()=>{
         getAllBookings();
         let obj = {};
-        axios.get("http://localhost:6969/init").then((response)=>{
+        api.get("/init").then((response)=>{
                 console.log("hello") 
                 console.log(response.data);
                 let data=response.data.response;
@@ -64,7 +64,7 @@ const Logs = () => {
     },[]);
 
     const getAllBookings = ()=>{
-        axios.get("http://localhost:6969/bookings//").then((response)=>{
+        api.get("/bookings//").then((response)=>{
                 setData(response.data);
                 console.log(data)
             }).catch((err)=>{
@@ -92,7 +92,7 @@ const Logs = () => {
     const submit = (e)=>{
         console.log("trying to submit")
         e.preventDefault();
-        axios.get(`http://localhost:6969/bookings/${roomType??""}/${roomNumber??""}/${startTime??""}/${endTime??""}/${status??""}`).then((response)=>{
+        api.get(`/bookings/${roomType??""}/${roomNumber??""}/${startTime??""}/${endTime??""}/${status??""}`).then((response)=>{
             setData(response.data);
             console.log(data)
         }).catch((err)=>{
@@ -228,7 +228,7 @@ const Logs = () => {
                         <td>
                         <button type="button" className="btn btn-danger" onClick={()=>{
                             if(window.confirm("Do you want to delete this record")) {
-                                axios.delete(`http://localhost:6969/deletebooking/${e.id}`).then((r)=>{
+                                api.delete(`/deletebooking/${e.id}`).then((r)=>{
                                 getAllBookings();
                             }).catch((e)=>console.log(e))
                             }

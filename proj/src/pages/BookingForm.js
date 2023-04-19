@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import axios from 'axios';
+import api from "../api/data"
 import './css/BookingForm.css';
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ function BookingForm() {
   useEffect(() => {
     console.log("heil1");
     let obj = {};
-    axios.get("http://localhost:6969/init").then((response)=>{
+    api.get("/init").then((response)=>{
            console.log("hello") 
            console.log(response.data);
            let data=response.data.response;
@@ -55,7 +55,7 @@ function BookingForm() {
       endTime:endTime,
       price:totalPrice
     }
-    axios.post(`http://localhost:6969/bookroom`,room_info).then((response)=>{
+    api.post(`/bookroom`,room_info).then((response)=>{
       console.log("hello");
       console.log(response);
       if(response.data.msg !== undefined){
