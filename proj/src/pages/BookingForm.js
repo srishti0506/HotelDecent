@@ -86,11 +86,14 @@ function BookingForm() {
     if(newConfig.newType !== "" && newConfig.endTime !== "" && newConfig.newStartTime !== "" ){
       let stDate = new Date(newConfig.newStartTime);
       let enDate = new Date(newConfig.newEndTime);
+      let now=new Date(); 
+      const hoursDiff = Math.floor((stDate - now) / (1000 * 60 * 60));//checking if the start date is older 
+      console.log(hoursDiff);
       const diffInMs = enDate - stDate;
       const diffInHours = diffInMs / (1000 * 60 * 60);
       
       //Invalid date time: when the starttime is after endtime
-      if(diffInHours <= 0){
+      if(diffInHours <= 0 || hoursDiff<0){
         alert("Invalid Start or End Time");
         setStartTime("");
         setEndTime("");

@@ -48,7 +48,7 @@ const conn = mysql.createConnection({
     database: "hotel_management",
 });
 
-
+//updating the booking status and getting room_info on page load 
 app.get("/init",(req,res)=>{
     console.log("hello");
 
@@ -78,52 +78,7 @@ app.get("/init",(req,res)=>{
     
 })
 
-//Deleting the bookings
-app.delete("/deletebooking/:id",(req,res)=>{
-    let sqlQuery = "DELETE FROM bookings WHERE id='"+req.params.id+"'";
-    
-    let query = conn.query(sqlQuery, (err, results) => {
-      if(err) throw err;
-        res.send(apiResponse(results));
-    });
-})
-
-// for sending emails 
-app.put("/cancelbooking/:id/:ret/:em/:rn/:rt/:st/:et",(req,res)=>{
-    let sqlQuery="UPDATE bookings set status='cancelled' where id='"+req.params.id+"'";
-    let query = conn.query(sqlQuery,(err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send(apiResponse(results));
-        cancelRoom.to = req.params.em;
-        cancelRoom.text = `Your Booking for room number ${req.params.rt}${req.params.rn} from ${req.params.st} to ${req.params.et} has been cancelled. Refund Percent : ${req.params.ret}%`;
-        transporter.sendMail(cancelRoom, (error, info) => {
-            if (error) {
-                return console.log(error);
-            }
-            console.log('Message sent: %s', info.messageId);
-        });
-    });
-})
-
-//updating the booking details of the user in the database
-app.put("/editBooking/:id",(req,res)=>{
-    let sqlQuery = "UPDATE bookings SET ? WHERE id= '"+req.params.id+"'";
-  
-    let query = conn.query(sqlQuery,req.body, (err, results) => {
-      if(err) throw err;
-      res.send(apiResponse(results));
-    });})
-
-//getting all the data from the booking table for given booking id
-app.get("/booking/:id",(req,res)=>{
-    let q = conn.query(`SELECT * FROM bookings where id=${req.params.id}`, (err, results) => {
-        if(err) throw err;
-        res.json((results));
-    });
-})
-
-//geeting all the booking details
+//geeting all the booking details --> log page data
 app.get("/bookings/*",(req,res)=>{
 
     const params = req.params[0].split('/');
@@ -151,7 +106,53 @@ app.get("/bookings/*",(req,res)=>{
     });
   
 });
-//Booking the room and inserting the info in the booking tables 
+
+//getting all the data from the booking table for given booking id -->edit page 
+app.get("/booking/:id",(req,res)=>{
+    let q = conn.query(`SELECT * FROM bookings where id=${req.params.id}`, (err, results) => {
+        if(err) throw err;
+        res.json((results));
+    });
+})
+
+//updating the booking details of the user in the database -->pressing submit on this
+app.put("/editBooking/:id",(req,res)=>{
+    let sqlQuery = "UPDATE bookings SET ? WHERE id= '"+req.params.id+"'";
+  
+    let query = conn.query(sqlQuery,req.body, (err, results) => {
+      if(err) throw err;
+      res.send(apiResponse(results));
+    });})
+
+//Deleting the bookings -->pressing delete on log page
+app.delete("/deletebooking/:id",(req,res)=>{
+    let sqlQuery = "DELETE FROM bookings WHERE id='"+req.params.id+"'";
+    
+    let query = conn.query(sqlQuery, (err, results) => {
+      if(err) throw err;
+        res.send(apiResponse(results));
+    });
+})
+
+// for cancelling booking -->pressing cancel on log page
+app.put("/cancelbooking/:id/:ret/:em/:rn/:rt/:st/:et",(req,res)=>{
+    let sqlQuery="UPDATE bookings set status='cancelled' where id='"+req.params.id+"'";
+    let query = conn.query(sqlQuery,(err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(apiResponse(results));
+        cancelRoom.to = req.params.em;
+        cancelRoom.text = `Your Booking for room number ${req.params.rt}${req.params.rn} from ${req.params.st} to ${req.params.et} has been cancelled. Refund Percent : ${req.params.ret}%`;
+        transporter.sendMail(cancelRoom, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+        });
+    });
+})
+
+//Booking the room and inserting the info in the booking tables --Booking new room page
 app.post("/bookroom",(req,res)=>{
     console.log("Book room");
    
@@ -184,7 +185,7 @@ app.post("/bookroom",(req,res)=>{
 
     //checking if teh new bookimg overlaps or collides with an existing booking
 
-    let sqlQuery =`select count(*) as cnt from bookings where room_type="${roomType}" and room_number=${roomNumber} and (("${startTime}" between start_time and end_time) or ("${endTime}" between start_time and end_time) or (start_time between "${startTime}" and "${endTime}") or (end_time between "${startTime}" and "${endTime}")); `;
+    let sqlQuery =`select count(*) as cnt from bookings where status="confirmed" and room_type="${roomType}" and room_number=${roomNumber} and (("${startTime}" between start_time and end_time) or ("${endTime}" between start_time and end_time) or (start_time between "${startTime}" and "${endTime}") or (end_time between "${startTime}" and "${endTime}")); `;
   
     let query = conn.query(sqlQuery, (err, results) => {
       if(err) throw err;

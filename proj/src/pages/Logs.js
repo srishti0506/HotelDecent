@@ -48,7 +48,7 @@ const Logs = () => {
 
 
     useEffect(()=>{
-        getAllBookings();
+       
         let obj = {};
         api.get("/init").then((response)=>{
                 console.log("hello") 
@@ -62,6 +62,8 @@ const Logs = () => {
             }).catch((err)=>{
                 console.log("qertyu");
             });
+    getAllBookings();
+
     },[]);
         //fetching all the booking details
     const getAllBookings = ()=>{
